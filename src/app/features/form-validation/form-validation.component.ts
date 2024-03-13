@@ -41,7 +41,7 @@ export class FormValidationComponent implements OnInit {
 
   private initForm(): void {
     const urlRegex = /\b(?:https?):\/\/[\w-]+(\.[\w-]+)+\S*/;
-    const amountRegex = /^(?:€\d+(?:[,.]\d*)?|\d+(?:[,.]\d+)?€?)$/;
+    const amountRegex = /^(?:€\d+(?:[,.]\d*)?|\d+(?:[,.]\d+)?€)$/;
 
     this.formGroup = this.fb.group({
       emails: [null, [Validators.required, this.validateEmails]],

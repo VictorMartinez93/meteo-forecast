@@ -13,7 +13,7 @@
     }
 
     .table-body {
-        background-color: #ffffff;
+        background-color: var(--row-color);
 
         tr {
             td {
