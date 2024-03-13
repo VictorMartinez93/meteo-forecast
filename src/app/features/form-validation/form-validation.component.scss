@@ -1,0 +1,42 @@
+.wrapper {
+    height: calc(100vh - 3rem - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #edfde9;
+
+    .form-validation-wrapper {
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+
+            .input-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: .25rem;
+                width: 30%;
+                min-width: 265px;
+            }
+        }
+    }
+
+    .confirmation-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .title {
+            color: var(--primary-color);
+            margin-bottom: 0;
+        }
+
+        .subtitle {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+    }
+}

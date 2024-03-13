@@ -1,0 +1,76 @@
+<div class="wrapper">
+  @if (!showConfirmation) {
+  <div class="form-validation-wrapper">
+    <form class="form" [formGroup]="formGroup" (ngSubmit)="submit()">
+      <div class="input-wrapper">
+        <input class="input" type="email" formControlName="emails"
+          placeholder="Insert multiple emails separated by commas" />
+        @if (submitted) {
+        @if (formGroup.get('emails')?.hasError('required')) {
+        <small class="error">
+          Email is required
+        </small>
+        }
+        @if (formGroup.get('emails')?.touched && formGroup.get('emails')?.hasError('invalidEmails')) {
+        <small class="error">
+          incorrect email/s. Please, try again.
+        </small>
+        }
+        }
+      </div>
+      <div class="input-wrapper">
+        <input class="input" type="text" formControlName="amount" replacePeriod
+          placeholder="Insert an amount with € symbol and decimals" />
+        @if (submitted) {
+        @if (formGroup.get('amount')?.hasError('required')) {
+        <small class="error">
+          Quantity is required.
+        </small>
+        }
+        @if (formGroup.get('amount')?.hasError('pattern')) {
+        <small class="error">
+          This field only accepts numbers with decimals and € symbol.
+        </small>
+        }
+        }
+      </div>
+      <div class="input-wrapper">
+        <input class="input" type="url" formControlName="url" placeholder="Insert a URL" />
+        @if (submitted) {
+        @if (formGroup.get('url')?.hasError('required')) {
+        <small class="error">
+          URL is required.
+        </small>
+        }
+        @if (formGroup.get('url')?.hasError('pattern')) {
+        <small class="error">
+          incorrect URL. Please try again.
+        </small>
+        }
+        }
+      </div>
+      <button type="submit" class="button">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+        </svg>
+        Validate
+      </button>
+    </form>
+  </div>
+  } @else {
+  <div class="confirmation-wrapper">
+    <h1 class="title">Your information has been successfully sent.</h1>
+    <p class="subtitle">We will get back to you shortly.</p>
+    <button class="button" type="button" [routerLink]="['/', 'weather']">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path
+          d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+      </svg>
+      Return to Weather
+    </button>
+  </div>
+  }
+</div>

@@ -1,6 +1,5 @@
-<a class="item" [routerLink]="menuItem.routerLink" routerLinkActive="active">
+<a class="item" [routerLink]="menuItem.routerLink" routerLinkActive="active" (click)="toggleMenu()">
   @if (menuItem.icon) {
-  <!-- <i [class]="menuItem.icon"></i> -->
   <div class="icon" [innerHTML]="menuItem.icon"></div>
   }
   <span class="label">

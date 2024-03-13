@@ -13,7 +13,8 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'home', loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule) },
-      { path: 'weather', loadChildren: () => import('./features/weather/weather.module').then(m => m.WeatherModule) }
+      { path: 'weather', loadChildren: () => import('./features/weather/weather.module').then(m => m.WeatherModule) },
+      { path: 'form-validation', loadChildren: () => import('./features/form-validation/form-validation.module').then(m => m.FormValidationModule) }
     ]
   },
   { path: '**', redirectTo: 'home' }

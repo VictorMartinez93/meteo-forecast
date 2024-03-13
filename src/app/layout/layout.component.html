@@ -1,4 +1,4 @@
-<div class="layout-wrapper">
+<div class="layout-wrapper" [class.visible-mobile]="layoutService.isMenuActive()">
   <div class="menu-wrapper">
     <h1 class="title">TechnicalTest</h1>
 
@@ -8,18 +8,32 @@
         @if (menuItem.children?.length) {
         <h2 class="subtitle">{{ menuItem.label }}</h2>
         @for (childrenItem of menuItem.children; track $index) {
-        <app-menu-item [menuItem]="childrenItem"></app-menu-item>
+        <app-menu-item [menuItem]="childrenItem" (menuClick)="toggleMenu()"></app-menu-item>
         }
         } @else {
-        <app-menu-item [menuItem]="menuItem"></app-menu-item>
+        <app-menu-item [menuItem]="menuItem" (menuClick)="toggleMenu()"></app-menu-item>
         }
       </div>
       }
     </div>
   </div>
+  <div class="layout-mask" (click)="toggleMenu()"></div>
   <div class="main-container">
-    <app-breadcrumb></app-breadcrumb>
-    <router-outlet></router-outlet>
+    <div class="topbar">
+      <app-breadcrumb></app-breadcrumb>
+      <div class="hamburger">
+        <button class="button" (click)="toggleMenu()">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
 <ng-template>

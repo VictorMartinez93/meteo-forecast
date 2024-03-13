@@ -7,6 +7,7 @@ import { Breadcrumb } from '../interfaces/menu/breadcrumb';
 export class LayoutService {
 
   public breadcrumb = signal<Breadcrumb[]>([]);
+  public isMenuActive = signal<boolean>(false);
 
   constructor() { }
 

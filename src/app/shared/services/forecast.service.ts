@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, of, tap } from 'rxjs';
 import { ForecastParams } from '../interfaces/forecast/forecast-params';
 import { Filter } from '../interfaces/filters/filter';
 import { Forecast } from '../interfaces/forecast/forecast';
 import { ForecastRow } from '../interfaces/forecast/forecast-row';
 import { environment } from '../../../environments/environment';
 import { Column } from '../interfaces/base/column';
+import { SessionStorageService } from './session-storage.service';
+import { CONSTANTS } from '../../core/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +16,24 @@ import { Column } from '../interfaces/base/column';
 export class ForecastService {
 
   constructor(
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
+    private readonly sessionStorageService: SessionStorageService
   ) { }
 
   get(forecast: ForecastParams): Observable<ForecastRow[]> {
+    const sessionStorage: ForecastRow[] = this.sessionStorageService.get(CONSTANTS.FORECAST_KEY) as ForecastRow[];
+
+    if (sessionStorage?.length) {
+      return of(sessionStorage);
+    }
+
     const filters: Filter[] = this.buildFilters(forecast);
     const queryParams: string = this.buildQueryParams(filters);
 
     return this.http.get<Forecast>(`${environment.api.root}/${environment.api.forecast}${queryParams}`)
       .pipe(
-        map((response: Forecast) => this.mapForecastToRows(response))
+        map((response: Forecast) => this.mapForecastToRows(response)),
+        tap((response: ForecastRow[]) => this.sessionStorageService.set(CONSTANTS.FORECAST_KEY, response))
       );
   }
 

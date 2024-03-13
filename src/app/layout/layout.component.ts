@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from '../shared/interfaces/menu/menu-item';
 import { DomSanitizer } from '@angular/platform-browser';
+import { LayoutService } from '../shared/services/layout.service';
 
 @Component({
   selector: 'app-layout',
@@ -11,11 +12,16 @@ export class LayoutComponent implements OnInit {
   public menu!: MenuItem[];
 
   constructor(
+    public readonly layoutService: LayoutService,
     private readonly sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
     this.setMenu();
+  }
+
+  public toggleMenu(): void {
+    this.layoutService.isMenuActive.update((value: boolean) => value = !value);
   }
 
   private setMenu(): void {
