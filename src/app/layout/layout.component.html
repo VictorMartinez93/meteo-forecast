@@ -1,0 +1,27 @@
+<div class="layout-wrapper">
+  <div class="menu-wrapper">
+    <h1 class="title">TechnicalTest</h1>
+
+    <div class="menu">
+      @for (menuItem of menu; track $index) {
+      <div class="menu-item">
+        @if (menuItem.children?.length) {
+        <h2 class="subtitle">{{ menuItem.label }}</h2>
+        @for (childrenItem of menuItem.children; track $index) {
+        <app-menu-item [menuItem]="childrenItem"></app-menu-item>
+        }
+        } @else {
+        <app-menu-item [menuItem]="menuItem"></app-menu-item>
+        }
+      </div>
+      }
+    </div>
+  </div>
+  <div class="main-container">
+    <app-breadcrumb></app-breadcrumb>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<ng-template>
+
+</ng-template>

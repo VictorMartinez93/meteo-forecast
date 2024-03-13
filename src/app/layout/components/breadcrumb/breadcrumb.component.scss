@@ -1,0 +1,17 @@
+.breadcrumb {
+    border-bottom: 2px solid #dfe7ef;
+    padding-bottom: 1rem;
+
+    .home {
+        cursor: pointer;
+
+        svg {
+            width: 1.5rem;
+        }
+    }
+
+    .breadcrumb-link {
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+}
