@@ -12,7 +12,8 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: 'home', loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule) }
+      { path: 'home', loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule) },
+      { path: 'weather', loadChildren: () => import('./features/weather/weather.module').then(m => m.WeatherModule) }
     ]
   },
   { path: '**', redirectTo: 'home' }

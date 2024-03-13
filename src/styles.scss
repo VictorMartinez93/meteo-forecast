@@ -4,4 +4,11 @@
 
 body {
     font-family: sans-serif;
+    background-color: var(--body-color);
+}
+
+.button-icon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
