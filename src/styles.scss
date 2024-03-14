@@ -57,3 +57,18 @@ body {
         outline: -webkit-focus-ring-color auto 1px var(--primary-color);
     }
 }
+
+.input-wrapper {
+    &.input-group {
+        .icon {
+            position: absolute;
+            padding: .75rem;
+            min-width: 20px;
+            fill: #00000082;
+        }
+
+        .input {
+            padding-left: calc(.75rem + 30px);
+        }
+    }
+}
