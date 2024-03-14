@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LayoutService } from '../../../shared/services/layout.service';
 
 @Component({
@@ -6,13 +6,10 @@ import { LayoutService } from '../../../shared/services/layout.service';
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss']
 })
-export class BreadcrumbComponent implements OnInit {
+export class BreadcrumbComponent {
 
   constructor(
     public readonly layoutService: LayoutService
   ) { }
-
-  ngOnInit() {
-  }
 
 }

@@ -16,7 +16,7 @@ export class SessionStorageService {
     return undefined;
   }
 
-  public set(key: string, data: any): void {
+  public set(key: string, data: unknown): void {
     sessionStorage.setItem(key, JSON.stringify(data));
   }
 

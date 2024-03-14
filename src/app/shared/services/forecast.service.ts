@@ -37,6 +37,8 @@ export class ForecastService {
       );
   }
 
+  // #region Sorting
+
   public sort(forecastRow: ForecastRow[], column: Column, asc: boolean): ForecastRow[] {
     if (column.name === 'time') {
       return forecastRow.sort((a: ForecastRow, b: ForecastRow) => this.sortByTime(a, b, asc));
@@ -98,6 +100,8 @@ export class ForecastService {
 
     return result;
   }
+
+  // #endregion
 
   private buildFilters(forecast: ForecastParams): Filter[] {
     const filters: Filter[] = [];
