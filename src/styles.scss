@@ -59,6 +59,12 @@ body {
 }
 
 .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    width: 30%;
+    min-width: 335px;
+
     &.input-group {
         .icon {
             position: absolute;
